@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style >
+        #dd{
+            color: green;
+        }
+        #btn1{
+            color: rgb(240, 228, 228);
+            background-color: brown;
+        }
+    </style>
+    <script src="SCRIPT/jquery-3.6.0.js"></script>
+</head>
+<body>
+<p id="dd">Para 1</p>
+<button id="btn1"> Press</button>
+<p> div para1</p>
+<p> div para2</p>
+
+
+
+  <script>
+      $(document).ready( function(){
+        //1
+        let p=$("#btn1");
+        p.click(function(){
+            var a = p.text();
+            alert(a);
+        })
+        //2
+        let ov =$("#dd");
+        ov.mouseover(function(){
+            ov.html("<h1><b> I am setting</b><h1>");
+        })
+      
+    });
+  </script>
+</body>
+</html>

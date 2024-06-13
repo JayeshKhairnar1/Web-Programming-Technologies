@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="SCRIPT/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(
+            function(){
+                $("#btn").click(function(){
+                    var a= $ ("t1").val();
+                    $("#t2").click( function(){
+                        $("t2").val();
+                    })
+
+
+                })
+            
+        });
+    </script>
+
+</head>
+<body>
+    <input type="text" value="mydata" id="t1"/>
+    <input type="button" value="copy" id="btn"/>
+    <input type="text" id="t2"/>
+</body>
+</html>

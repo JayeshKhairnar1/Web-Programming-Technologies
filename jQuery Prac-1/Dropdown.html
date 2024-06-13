@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head>
+<script src="SCRIPT/jquery-3.6.0.js"></script>
+<script>
+$(document).ready(function() {
+    $("select").change(function()
+ {
+    alert($("select option:selected").text())
+var x=$("select option:selected").text()
+    $("#t3").val(x);
+});  });
+</script>
+</head><body>
+<pre>
+
+
+    <form id="frm" action="a.html">
+        <select id="sl">
+        <option>none</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        </select>
+        Option Selected is:<input   id="t3" disabled/>
+        </form>
+        </pre>                
+        
+        </body>
+        </html>
+        

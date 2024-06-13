@@ -1,0 +1,108 @@
+<!-- 
+ Q1.Basic Form Validation and empty field not allowed
+userId length: min=8, max=16
+password : min=8, max=16 must have atleast one uppercase,lowercase, symbol
+Submit 
+Reset
+-->
+
+<!-- 
+Q2.Email and Confirm email must be same
+Submit RESET or else Error
+
+Q3. Create 2 Text Areas and Checkbox on click of checkbox.copy addreess from
+first text area to second text area.
+
+Q4. When you type use name it should appear in uppercase
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            // Clear previous errors
+            document.getElementById("error").innerHTML = "";
+
+            // User ID validation
+            let userId = document.getElementById("userId").value;
+            if (userId.length < 8 || userId.length > 16) {
+                document.getElementById("error").innerHTML = "User ID must be between 8 and 16 characters.<br>";
+                return false;
+            }
+
+            // Password validation
+            let password = document.getElementById("password").value;
+            let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,16}$/;
+            if (!passwordRegex.test(password)) {
+                document.getElementById("error").innerHTML += "Password must be between 8 and 16 characters and contain at least one uppercase letter, one lowercase letter, and one symbol.<br>";
+                return false;
+            }
+
+            // Email validation
+            let email = document.getElementById("email").value;
+            let confirmEmail = document.getElementById("confirmEmail").value;
+            if (email !== confirmEmail) {
+                document.getElementById("error").innerHTML += "Email and Confirm Email must be the same.<br>";
+                return false;
+            }
+
+            return true;
+        }
+
+        function copyAddress() {
+            if (document.getElementById("copyAddress").checked) {
+                document.getElementById("address2").value = document.getElementById("address1").value;
+            } else {
+                document.getElementById("address2").value = "";
+            }
+        }
+
+        function toUpperCase() {
+            let usernameField = document.getElementById("username");
+            usernameField.value = usernameField.value.toUpperCase();
+        }
+    </script>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form onsubmit="return validateForm()">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" minlength="8" maxlength="16" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" minlength="8" maxlength="16" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="confirmEmail">Confirm Email:</label>
+        <input type="email" id="confirmEmail" name="confirmEmail" required><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" oninput="toUpperCase()" required><br><br>
+
+        <label for="address1">Address 1:</label>
+        <textarea id="address1" name="address1"></textarea><br><br>
+
+        <input type="checkbox" id="copyAddress" name="copyAddress" onclick="copyAddress()">
+        <label for="copyAddress">Copy Address to Address 2</label><br><br>
+
+        <label for="address2">Address 2:</label>
+        <textarea id="address2" name="address2"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+    <div id="error" class="error"></div>
+</body>
+</html>
